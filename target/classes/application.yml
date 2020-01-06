@@ -1,0 +1,29 @@
+#服务配置
+server:
+  port: 8085
+
+#日志配置
+logging:
+  path: D:/WEB-INF/logs #保存日志
+  lv: info # 控制台日志输出级别
+  dateSize: 1 # 日志保存天数
+
+#邮箱配置
+#email:
+  #主机
+#  smtpHost: smtp.qq.com
+  #端口(465或587)
+#  smtpPort: 465
+#  username: 1065334389@qq.com
+#  password: gxodywzypjeibcfj
+#  SSL: true
+#  email_from: 1065334389@qq.com
+#  email_to: sunshine687@163.com
+
+#spring配置
+spring:
+  profiles:
+    active: dev #用来配置所属环境
+
+#系统用变量
+apiUrl: http://mobsec-dianhua.baidu.com/dianhua_api/open/location

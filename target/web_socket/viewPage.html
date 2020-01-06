@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:margin-top="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>viewPage</title>
+    <script src="static/js/jquery.js"></script>
+    <script src="static/js/vue.js"></script>
+    <script src="static/js/echarts.js"></script>
+    <script src="static/js/iview.js"></script>
+    <link rel="stylesheet" href="static/css/iview.css">
+    <style>
+        html,body{
+            height: 100%;
+            width:100%;
+        }
+        h3,p{
+            line-height: 30px;
+            padding-left: 10px;
+        }
+        #app{
+            width:100%;
+            height:100%;
+            overflow-y: auto;
+            background: url("static/image/techPic.jpg") no-repeat;
+            background-size: 100% 100%;
+        }
+        .divContainer{
+            width: 100%;
+            position: relative;
+            padding:20px;
+        }
+        .titleClass{
+            height: 50px;
+            line-height: 50px;
+            width: 100%;
+            position: absolute;
+            left:0;
+            top:0;
+            font-size: 1.6em;
+            text-align: center;
+            color:#BCE2E8;
+            background-color: rgba(9,34,53,.4);
+            z-index: 9;
+        }
+        .childContainer{
+            height: 800px;
+            margin-top:30px;
+            border:1px solid rgba(96,143,198,0.5);
+            background-color: rgba(12,37,56,0.9);
+            position: relative;
+        }
+        .childTitleClass{
+            background-color: rgba(0,77,89,.0);
+            width: 100%;
+            height:30px;
+            line-height: 30px;
+            text-align: center;
+            font-size: 1.2em;
+            color: #BCE2E8;
+        }
+        .childBodyClass{
+            width: 100%;
+            height:calc(100% - 30px);
+        }
+        .left_text_container{
+            width: 60%;
+            height:100%;
+            color: #fff;
+        }
+        .blueFontClass{
+            color: rgb(106,203,252);
+        }
+        .greenFontClass{
+            color: rgb(77,178,82);
+        }
+        .redFontClass{
+            color: rgb(255,0,0);
+        }
+        .pic_circle_container{
+            margin-top: 10px;
+            width: 40%;
+            height:140px;
+        }
+        .pic_circle_title{
+            height: 20px;
+            line-height:20px;
+            width: 100%;
+            color:#fff;
+            font-size: 1.0em;
+            text-align: center;
+        }
+        .pic_circle_body{
+            height: 100px;
+            line-height: 100px;
+            width: 100%;
+            padding:5px;
+            text-align: center;
+        }
+        .pic_circle_body_circle{
+            width:90px;
+            height: 90px;
+            margin:auto;
+            border: 5px solid #22a0da;
+            border-radius: 45px;
+            background-size: 70% 70% !important;
+        }
+        .pic_circle_footer{
+            height: 20px;
+            line-height:20px;
+            width: 100%;
+            color:#fff;
+            font-size: 1.2em;
+            text-align: center;
+        }
+
+        .left_text_class{
+            height: calc(100% - 30px);
+            width: 40%;
+            color:#fff;
+            font-size: 0.9em;
+            text-align: left;
+        }
+        .pic_square_container{
+            margin-top: 10px;
+            width: 50%;
+            height:140px;
+        }
+        .pic_square_title{
+            height: 20px;
+            line-height:20px;
+            width: 100%;
+            color:#fff;
+            font-size: 1.0em;
+            text-align: center;
+        }
+        .pic_square_body{
+            height: 105px;
+            line-height: 105px;
+            width: 100%;
+            padding:5px;
+            text-align: center;
+            background-size: 50px 50px !important;
+        }
+        .pic_square_body_circle{
+            width:70px;
+            height: 70px;
+            margin:12px auto;
+            transform:rotate(45deg);
+            border: 5px solid #05A7BC;
+        }
+        .pic_square_footer{
+            height: 20px;
+            line-height:20px;
+            width: 100%;
+            color:#fff;
+            font-size: 1.2em;
+            text-align: center;
+        }
+        .pic_square_footer_text{
+            height: 30px;
+            line-height:30px;
+            width: 100%;
+            color:#fff;
+            font-size: 0.7em;
+            text-align: left;
+            margin-top: 5px;
+        }
+
+    </style>
+</head>
+<body>
+<div id="app">
+    <Row :gutter="8" class="divContainer">
+        <div class="titleClass">
+            Product Support Sales Monthly Dashboard - September
+        </div>
+        <i-col span="7">
+            <div class="childContainer">
+                <!-- 左上角高亮 -->
+                <div style="width:30px;height:30px;position:absolute;left:0;top:0;border-left:1px solid #4BCADA;border-top:1px solid #4BCADA;"></div>
+                <!-- 左下角高亮 -->
+                <div style="width:30px;height:30px;position:absolute;left:0;bottom:0;border-left:1px solid #4BCADA;border-bottom:1px solid #4BCADA;"></div>
+                <div class="childTitleClass">
+                    Customer & Machine
+                </div>
+                <div class="childBodyClass">
+                    <!-- 子容器类型一 -->
+                    <div style="height:50%;width:100%;border-bottom: 1px dotted rgba(96,143,198,0.5);">
+                        <!-- 文字容器 -->
+                        <div class="left_text_container" style="float: left;left:0;">
+                            <h3 style="height: 30px;margin-top: 30px;">Retail</h3>
+                            <p style="height: 70px;margin-top: 10px;">● The average number of customers covered by CSR is <span class="blueFontClass">142</span></p>
+                            <p style="height: 70px;margin-top: 10px;">● The average number of equipment covered by CSR is <span class="blueFontClass">205</span></p>
+                            <p style="height: 70px;margin-top: 10px;">
+                                ● HEX: <span class="blueFontClass">24,037</span> Machines, <span class="blueFontClass">16,616</span> customers.<br/>
+                                &nbsp;&nbsp;&nbsp;BCP: <span class="blueFontClass">4,087</span> Machines, <span class="blueFontClass">3754</span> Customers.<br/>
+                                &nbsp;&nbsp;&nbsp;EXD: <span class="blueFontClass">19,950</span> Machines, <span class="blueFontClass">12,862</span> customers.
+                            </p>
+
+                        </div>
+
+                        <!-- 图标容器 -->
+                        <div style="clear: none;"></div>
+                        <div class="pic_circle_container" style="float: right;right:0;">
+                            <div class="pic_circle_title">
+                                142
+                            </div>
+                            <div class="pic_circle_body">
+                                <div class="pic_circle_body_circle" style="background: url('./static/image/worker.png') no-repeat center center;">
+
+                                </div>
+                            </div>
+                            <div class="pic_circle_footer">
+                                Customers Per CSR
+                            </div>
+                        </div>
+
+                        <!-- 图标容器 -->
+                        <div style="clear: none;"></div>
+                        <div class="pic_circle_container" style="float: right;right:0;margin-top: 30px;">
+                            <div class="pic_circle_title">
+                                205
+                            </div>
+                            <div class="pic_circle_body">
+                                <div class="pic_circle_body_circle" style="background: url('./static/image/挖掘机.png') no-repeat center center;">
+
+                                </div>
+                            </div>
+                            <div class="pic_circle_footer">
+                                Customers Per CSR
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 子容器类型一 -->
+                    <div style="height:50%;width:100%;">
+                        <!-- 文字容器 -->
+                        <div class="left_text_container" style="float: left;left:0;">
+                            <h3 style="height: 30px;margin-top: 30px;">MA & ENG</h3>
+                            <p style="height: 70px;margin-top: 10px;">● The average number of customers covered by CSM is <span class="blueFontClass">22</span></p>
+                            <p style="height: 70px;margin-top: 10px;">● The average number of equipment covered by CSM is <span class="blueFontClass">151</span></p>
+                            <p style="height: 70px;margin-top: 10px;">● The number of Engines is: <span class="blueFontClass">1593</span></p>
+                        </div>
+
+                        <!-- 图标容器 -->
+                        <div style="clear: none;"></div>
+                        <div class="pic_circle_container" style="float: right;right:0;">
+                            <div class="pic_circle_title">
+                                22
+                            </div>
+                            <div class="pic_circle_body">
+                                <div class="pic_circle_body_circle" style="background: url('./static/image/worker.png') no-repeat center center;">
+
+                                </div>
+                            </div>
+                            <div class="pic_circle_footer">
+                                Customers Per CSM
+                            </div>
+                        </div>
+
+                        <!-- 图标容器 -->
+                        <div style="clear: none;"></div>
+                        <div class="pic_circle_container" style="float: right;right:0;margin-top: 30px;">
+                            <div class="pic_circle_title">
+                                151
+                            </div>
+                            <div class="pic_circle_body">
+                                <div class="pic_circle_body_circle" style="background: url('./static/image/挖掘机.png') no-repeat center center;">
+
+                                </div>
+                            </div>
+                            <div class="pic_circle_footer">
+                                Machines Per CSM
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </i-col>
+        <i-col span="10">
+            <div class="childContainer">
+                <div class="childTitleClass">
+                    Sales Performance
+                </div>
+                <div class="childBodyClass">
+                    <!-- 子容器类型三 -->
+                    <div style="height:34%;width:100%;border-bottom: 1px dotted rgba(96,143,198,0.5);">
+                        <!-- 顶部标题 -->
+                        <h3 style="text-align: center;height:30px;line-height: 30px;color: #1CB9CE;">
+                            YTD Sep 2019 Sales Revenue
+                        </h3>
+                        <div id="bar_001" style="height:calc(100% - 30px);width:60%;float:right;right:0;"></div>
+                        <div class="left_text_class" style="float: left;left: 0;">
+                            <p style="height: 20px;line-height: 17px;margin-top: 10px;">● Annual BP completion: <span class="blueFontClass">64.5%</span></p>
+                            <p style="height: 20px;line-height: 17px;margin-top: 10px;">● Total Sales: <span class="blueFontClass">420.5M</span>,<span class="greenFontClass">+3%</span></p>
+                            <p style="height: 20px;line-height: 17px;margin-top: 10px;">● MA Sales: <span class="blueFontClass">20.4M</span>,<span class="greenFontClass">+73%</span> YOY</p>
+                            <p style="height: 20px;line-height: 17px;margin-top: 10px;">● ESS Sales: <span class="blueFontClass">47.5M</span>,<span class="greenFontClass">+101%</span> YOY</p>
+                            <p style="height: 20px;line-height: 17px;margin-top: 10px;">● Mining Project Sales: <span class="blueFontClass">27M</span>,<span class="redFontClass">-44%</span> YOY</p>
+                            <p style="height: 20px;line-height: 17px;margin-top: 10px;">● Parts Retail Sales: <span class="blueFontClass">325.5M</span>,<span class="greenFontClass">+0.4%</span> YOY</p>
+                        </div>
+                    </div>
+                    <!-- 子容器类型三 -->
+                    <div style="height:34%;width:100%;border-bottom: 1px dotted rgba(96,143,198,0.5);">
+                        <!-- 顶部标题 -->
+                        <h3 style="text-align: center;height:30px;line-height: 30px;color: #1CB9CE;">
+                            YTD Sep 2019 Sales GP%
+                        </h3>
+                        <div id="bar_002" style="height:calc(100% - 30px);width:60%;float:right;right:0;"></div>
+                        <div class="left_text_class" style="float: left;left: 0;">
+                            <p style="height: 20px;line-height: 17px;margin-top: 40px;">● MA GP%: <span class="blueFontClass">29.3%</span><span class="redFontClass">-44%</span> YOY</p>
+                            <p style="height: 20px;line-height: 17px;margin-top: 10px;">● ESS GP%: <span class="blueFontClass">26.4%</span>,<span class="greenFontClass">+37%</span> YOY</p>
+                            <p style="height: 20px;line-height: 17px;margin-top: 10px;">● Minging Project GP%: <span class="blueFontClass">36.1%</span>,<span class="redFontClass">-45%</span> YOY</p>
+                            <p style="height: 20px;line-height: 17px;margin-top: 10px;">● Parts Retail GP%: <span class="blueFontClass">21.1%</span>,<span class="redFontClass">-16%</span> YOY</p>
+                        </div>
+                    </div>
+                    <!-- 子容器类型三 -->
+                    <div style="height:34%;width:100%;border-bottom: 1px dotted rgba(96,143,198,0.5);">
+                        <!-- 顶部标题 -->
+                        <h3 style="text-align: center;height:30px;line-height: 30px;color: #1CB9CE;">
+                            YTD Sep 2019 Service DCAL(Rolling 12 months)
+                        </h3>
+                        <div id="line_001" style="height:calc(100% - 30px);width:60%;float:right;right:0;"></div>
+                        <div class="left_text_class" style="float: left;left: 0;">
+                            <p style="height: 20px;line-height: 17px;margin-top: 40px;">● MA SDCAL: 35.9%,<span class="greenFontClass">+145%</span> of BP</p>
+                            <p style="height: 20px;line-height: 17px;margin-top: 10px;">● MA SDCAL: 6.2%,<span class="redFontClass">-59%</span> YOY,31% of BP</p>
+                            <p style="height: 20px;line-height: 17px;margin-top: 10px;">● Retail SDCAL: 30.8%,<span class="greenFontClass">+4%</span> YOY,93% of BP</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </i-col>
+        <i-col span="7">
+            <div class="childContainer">
+                <!-- 右上角高亮 -->
+                <div style="width:30px;height:30px;position:absolute;right:0;top:0;border-right:1px solid #4BCADA;border-top:1px solid #4BCADA;"></div>
+                <!-- 右下角高亮 -->
+                <div style="width:30px;height:30px;position:absolute;right:0;bottom:0;border-right:1px solid #4BCADA;border-bottom:1px solid #4BCADA;"></div>
+                <div class="childTitleClass">
+                    Key Projects
+                </div>
+                <div class="childBodyClass">
+                    <!-- 子容器类型二 -->
+                    <div style="height:34%;width:100%;">
+                        <!-- 图标容器 -->
+                        <div class="pic_square_container" style="width:55%;float: left;left:0;">
+                            <div class="pic_square_title">
+                                41.5 M
+                            </div>
+                            <div class="pic_square_body" style="background: url('./static/image/Online.png') no-repeat center center;">
+                                <div class="pic_square_body_circle">
+
+                                </div>
+                            </div>
+                            <div class="pic_square_footer">
+                                Online Sales
+                            </div>
+                            <div class="pic_square_footer_text">
+                                <p style="height:30px;line-height: 17px;">● YTD Sep online sales <span class="blueFontClass">41.5M</span>,<span class="blueFontClass">12.7%</span> of total Retail Sales.</p>
+                                <p style="height:17px;line-height: 17px;">● YTD Sep <span class="blueFontClass">218</span> dormant customer activated.</p>
+                                <p style="height:17px;line-height: 17px;">● YTD Sep <span class="blueFontClass">4460</span> customers purchased online.</p>
+                                <p style="height:30px;line-height: 17px;">● Top three online sales by major class:<br/>
+                                    <span class="blueFontClass">FLUIDS</span> 22.3M, <span class="blueFontClass">FILTERS</span> 14.1M, <span class="blueFontClass">EBG</span> 2.1M</p>
+                            </div>
+                        </div>
+                        <!-- 图标容器 -->
+                        <div style="clear: none;"></div>
+                        <div class="pic_square_container" style="width:45%;float: right;right:0;">
+                            <div class="pic_square_title">
+                                5,978
+                            </div>
+                            <div class="pic_square_body" style="background: url('./static/image/read.png') no-repeat center center;">
+                                <div class="pic_square_body_circle">
+
+                                </div>
+                            </div>
+                            <div class="pic_square_footer">
+                                CVA
+                            </div>
+                            <div class="pic_square_footer_text">
+                                <p style="height:30px;line-height: 17px;">● Active CVA <span class="blueFontClass">5,978</span>,<span class="blueFontClass">21.7%</span> of total machines.</p>
+                                <p style="height:17px;line-height: 17px;">● Machine bundled: <span class="blueFontClass">3,544</span></p>
+                                <p style="height:17px;line-height: 17px;">● After-sales: <span class="blueFontClass">138</span></p>
+                                <p style="height:30px;line-height: 17px;">● Regular: <span class="blueFontClass">2,291</span></p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 子容器类型二 -->
+                    <div style="height:33%;width:100%;">
+                        <!-- 图标容器 -->
+                        <div class="pic_square_container" style="width:55%;float: left;left:0;">
+                            <div class="pic_square_title">
+                                89%
+                            </div>
+                            <div class="pic_square_body" style="background: url('./static/image/adduser.png') no-repeat center center;">
+                                <div class="pic_square_body_circle">
+
+                                </div>
+                            </div>
+                            <div class="pic_square_footer">
+                                Person in service%
+                            </div>
+                            <div class="pic_square_footer_text">
+                                <p style="height:17px;line-height: 17px;">● YTD Sep Total CSR: <span class="blueFontClass">117/131</span></p>
+                                <p style="height:17px;line-height: 17px;">● YTD Sep CSR resignation: <span class="blueFontClass">15</span></p>
+                                <p style="height:17px;line-height: 17px;">● CSR in-service personnel rate: <span class="blueFontClass">89%</span></p>
+                                <p style="height:30px;line-height: 17px;">● CSR vacancy:<br/>
+                                    <span class="blueFontClass">YN: 3,GZ: 6,SC: 2,CQ: 1,TB: 1,GS: 1</span></p>
+                            </div>
+                        </div>
+                        <!-- 图标容器 -->
+                        <div style="clear: none;"></div>
+                        <div class="pic_square_container" style="width:45%;float: right;right:0;">
+                            <div class="pic_square_title">
+                                4.11M
+                            </div>
+                            <div class="pic_square_body" style="background: url('./static/image/货车.png') no-repeat center center;">
+                                <div class="pic_square_body_circle">
+
+                                </div>
+                            </div>
+                            <div class="pic_square_footer">
+                                Mobile Truck
+                            </div>
+                            <div class="pic_square_footer_text">
+                                <p style="height:17px;line-height: 17px;">● YTD sales: <span class="blueFontClass">4.11M</span></p>
+                                <p style="height:17px;line-height: 17px;">● <span class="blueFontClass">73%</span> achievement ofMobile Truck <br>
+                                    YTD Sales BP
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 子容器类型二 -->
+                    <div style="height:33%;width:100%;">
+                        <!-- 图标容器 -->
+                        <div class="pic_square_container" style="width:55%;float: left;left:0;">
+                            <div class="pic_square_body" style="background: url('./static/image/石油.png') no-repeat center center;">
+                                <div class="pic_square_body_circle">
+                                </div>
+                            </div>
+                            <div class="pic_square_footer">
+                                CNPC
+                            </div>
+                            <div class="pic_square_footer_text">
+                                <p style="height:17px;line-height: 17px;">● YTD Parts Sales by contract: <span class="blueFontClass">36.6M</span></p>
+                                <p style="height:17px;line-height: 17px;">● Parts Delivery Value: <span class="blueFontClass">22.6M</span></p>
+                                <p style="height:17px;line-height: 17px;">● A/R: <span class="blueFontClass">6.8M</span></p>
+                                <p style="height:30px;line-height: 17px;">● Overdue A/R: <span class="blueFontClass">0.3M</span></p>
+                            </div>
+                        </div>
+                        <!-- 图标容器 -->
+                        <div style="clear: none;"></div>
+                        <div class="pic_square_container" style="width:45%;float: right;right:0;">
+                            <div class="pic_square_body" style="background: url('./static/image/水龙头.png') no-repeat center center;">
+                                <div class="pic_square_body_circle">
+
+                                </div>
+                            </div>
+                            <div class="pic_square_footer">
+                                Engine Overhaul
+                            </div>
+                            <div class="pic_square_footer_text">
+                                <p style="height:17px;line-height: 17px;">● YTE ESS Achieved: <span class="blueFontClass">3</span>(Target 30)</p>
+                                <p style="height:30px;line-height: 17px;">● YTD Retail Achieved: <br/><span class="blueFontClass">242</span>(Target 359)</p>
+                                <p style="height:17px;line-height: 17px;">● Total revenue of closed orders: <span class="blueFontClass">1M</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </i-col>
+    </Row>
+</div>
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+
+        },
+
+        //监听某个数据的变化执行函数
+        watch:{
+
+        },
+
+        computed:{
+
+        },
+        //创建实例之前-执行的钩子事件
+        beforeCreate: function () {
+            console.log("beforeCreate");
+        },
+
+        //创建实例之后-执行的钩子事件
+        //在实例创建之后同步调用。此时实例已经结束解析选项，这意味着已建立：数据绑定，计算属性，方法，watcher/事件回调。但是还没有开始 DOM 编译，$el 还不存在。
+        created: function () {
+            console.log("created");
+        },
+
+        //将编译完成的html挂载到对应虚拟dom之前触发的钩子事件，此时页面并没有内容
+        beforeMount:function(){
+            console.log("beforeMount");
+        },
+
+        //编译好的html挂载到页面完成后 执行的钩子事件，此钩子函数中一般会做一些ajax请求用于数据的初始化，在整个实例中只执行一次，
+        mounted:function(){
+            console.log("mounted");
+            this.generateBar_001();
+            this.generateBar_002();
+            this.generateLine_001();
+        },
+
+        //实时监控数据的变化并随之更新dom，更新之前执行的钩子事件
+        beforeUpdate:function(){
+
+        },
+
+        //实时监控数据的变化并随之更新dom，更新之后执行的钩子事件
+        updated:function(){
+
+        },
+
+        methods: {
+            generateBar_001(){
+                let bar_001 = echarts.init(document.getElementById('bar_001'));
+                let option = {
+                    color:["#ACD7CA","#2683C6","#AAD6E7","#FFC000"],
+                    tooltip: {
+                        trigger: 'axis',
+                        axisPointer: {
+                            type: 'cross',
+                            crossStyle: {
+                                color: '#999'
+                            }
+                        }
+                    },
+                    grid:{
+                        top:"30px",
+                        bottom:"70px",
+                        left:"50px",
+                        right:"50px"
+                    },
+                    legend: {
+                        data:['2018 Act.Sales','2019 Act.Sales','2019 Annual BP','BP completion%'],
+                        y: "bottom",
+                        textStyle:{
+                            color: "#fff"
+                        }
+                    },
+                    xAxis: [
+                        {
+                            type: 'category',
+                            data: ['MA','ESS','Mining Project','Retail','YTD Total'],
+                            axisPointer: {
+                                type: 'shadow'
+                            },
+                            axisLabel: {
+                                show: true,
+                                textStyle: {
+                                    color: '#fff'
+                                }
+                            },
+                            splitLine: {
+                                show: false
+                            }
+                        }
+                    ],
+                    yAxis: [
+                        {
+                            type: 'value',
+                            name: 'Sales Volume',
+                            min: 0,
+                            max: 700,
+                            interval: 100,
+                            axisTick:{       //y轴刻度线
+                                show:false
+                            },
+                            splitLine: {
+                                show: false
+                            },
+                            axisLabel: {
+                                formatter: '￥{value}',
+                                textStyle: { //改变刻度字体样式
+                                    color: '#fff'
+                                }
+                            },
+                            nameTextStyle:{
+                                color:"#fff"
+                            }
+                        },
+                        {
+                            type: 'value',
+                            name: 'Turnover rate',
+                            min: 0,
+                            max: 100,
+                            interval: 20,
+                            axisTick:{       //y轴刻度线
+                                show:false
+                            },
+                            splitLine: {
+                                show: false
+                            },
+                            axisLabel: {
+                                formatter: '{value}%',
+                                textStyle: { //改变刻度字体样式
+                                    color: '#fff'
+                                }
+                            },
+                            nameTextStyle:{
+                                color:"#fff"
+                            }
+                        }
+                    ],
+                    series: [
+                        {
+                            name:'2018 Act.Sales',
+                            type:'bar',
+                            data:[15.0, 25.0, 45.0, 350.0, 400.0]
+                        },
+                        {
+                            name:'2019 Act.Sales',
+                            type:'bar',
+                            data:[20.0, 50.0, 30.0, 350.0, 410.0]
+                        },
+                        {
+                            name:'2019 Annual BP',
+                            type:'bar',
+                            data:[33.0, 60.0, 56.0, 503.0, 652.0]
+                        },
+                        {
+                            name:'BP completion%',
+                            type:'line',
+                            yAxisIndex: 1,
+                            data:[62, 79, 48, 65, 64]
+                        }
+                    ]
+                };
+                bar_001.setOption(option);
+            },
+            generateBar_002(){
+                let bar_002 = echarts.init(document.getElementById('bar_002'));
+                let option = {
+                    color:["#ACD7CA","#2683C6","#AAD6E7","#FFC000"],
+                    tooltip: {
+                        trigger: 'axis',
+                        axisPointer: {
+                            type: 'cross',
+                            crossStyle: {
+                                color: '#999'
+                            }
+                        }
+                    },
+                    grid:{
+                        top:"30px",
+                        bottom:"70px",
+                        left:"50px",
+                        right:"50px"
+                    },
+                    legend: {
+                        data:['YTD 2018 Sep GP%','YTD 2019 Sep GP%','2019 vs 2018'],
+                        y: "bottom",
+                        textStyle:{
+                            color: "#fff"
+                        }
+                    },
+                    xAxis: [
+                        {
+                            type: 'category',
+                            data: ['MA','ESS','Mining Project','Retail'],
+                            axisPointer: {
+                                type: 'shadow'
+                            },
+                            axisLabel: {
+                                show: true,
+                                textStyle: {
+                                    color: '#fff'
+                                }
+                            },
+                            splitLine: {
+                                show: false
+                            }
+                        }
+                    ],
+                    yAxis: [
+                        {
+                            type: 'value',
+                            name: '',
+                            min: 0,
+                            max: 40,
+                            interval: 20,
+                            axisTick:{       //y轴刻度线
+                                show:false
+                            },
+                            splitLine: {
+                                show: false
+                            },
+                            axisLabel: {
+                                formatter: '{value}%',
+                                textStyle: { //改变刻度字体样式
+                                    color: '#fff'
+                                }
+                            },
+                            nameTextStyle:{
+                                color:"#fff"
+                            }
+                        },
+                        {
+                            type: 'value',
+                            name: '',
+                            min: -20,
+                            max: 50,
+                            interval: 10,
+                            axisTick:{       //y轴刻度线
+                                show:false
+                            },
+                            splitLine: {
+                                show: false
+                            },
+                            axisLabel: {
+                                formatter: '{value}%',
+                                textStyle: { //改变刻度字体样式
+                                    color: '#fff'
+                                }
+                            },
+                            nameTextStyle:{
+                                color:"#fff"
+                            }
+                        }
+                    ],
+                    series: [
+                        {
+                            name:'YTD 2018 Sep GP%',
+                            type:'bar',
+                            data:[35.0, 18.0, 23.0, 24.0]
+                        },
+                        {
+                            name:'YTD 2019 Sep GP%',
+                            type:'bar',
+                            data:[34.0, 28.0, 36.0, 22.0]
+                        },
+                        {
+                            name:'2019 vs 2018',
+                            type:'line',
+                            yAxisIndex: 1,
+                            data:[-4, 37, 45, -16]
+                        }
+                    ]
+                };
+                bar_002.setOption(option);
+            },
+            generateLine_001(){
+                let line_001 = echarts.init(document.getElementById('line_001'));
+                let option = {
+                    color:["#ACD7CA","#2683C6","#FFC000"],
+                    grid:{
+                        top:"15px",
+                        bottom:"80px",
+                        left:"50px",
+                        right:"50px"
+                    },
+                    legend: {
+                        data:['MA',"ESS","Retail"],
+                        textStyle:{
+                            color: "#fff"
+                        },
+                        // top:0,
+                        bottom:20
+                    },
+                    tooltip: {
+                        trigger: 'axis'
+                    },
+                    xAxis: [
+                        {
+                            type: 'category',
+                            data: ["1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"],
+                            axisPointer: {
+                                type: 'shadow'
+                            },
+                            axisLabel: {
+                                show: true,
+                                textStyle: {
+                                    color: '#fff'
+                                }
+                            },
+                            splitLine: {
+                                show: false
+                            }
+                        }
+                    ],
+                    yAxis: [
+                        {
+                            type: 'value',
+                            name: '',
+                            min: 0,
+                            max: 80,
+                            interval: 20,
+                            axisTick:{       //y轴刻度线
+                                show:false
+                            },
+                            splitLine: {
+                                show: false
+                            },
+                            axisLabel: {
+                                formatter: '{value}%',
+                                textStyle: { //改变刻度字体样式
+                                    color: '#fff'
+                                }
+                            },
+                            nameTextStyle:{
+                                color:"#fff"
+                            }
+                        },
+                    ],
+                    series: [
+                        {
+                            name:'MA',
+                            type:'line',
+                            data:[18,19,18,4,2,5,4,3,2,7,5,5]
+                        },
+                        {
+                            name:'ESS',
+                            type:'line',
+                            data:[20,23,24,43,50,61,58,50,51,41,32,37]
+                        },
+                        {
+                            name:'Retail',
+                            type:'line',
+                            data:[31,24,25,44,39,37,38,33,32,31,31,31]
+                        }
+                    ]
+                };
+                line_001.setOption(option);
+            }
+        }
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+#服务配置
+server:
+  port: 8085
+
+#日志配置
+logging:
+  path: D:/WEB-INF/logs #保存日志
+  lv: info # 控制台日志输出级别
+  dateSize: 1 # 日志保存天数
+
+
+#系统用变量
+apiUrl: http://mobsec-dianhua.baidu.com/dianhua_api/open/location

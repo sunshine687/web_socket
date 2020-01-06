@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:margin-top="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>viewPage2</title>
+    <script src="static/js/jquery.js"></script>
+    <script src="static/js/vue.js"></script>
+    <script src="static/js/echarts.js"></script>
+    <script src="static/js/iview.js"></script>
+    <script src="static/js/jquery.knob.js"></script>
+    <link rel="stylesheet" href="static/css/iview.css">
+    <style>
+        html,body{
+            height: 100%;
+            width:100%;
+        }
+        h2{color:#87CEEB;font-family:'Georgia';}
+        h3,p{
+            line-height: 30px;
+            padding-left: 10px;
+        }
+        #app{
+            width:100%;
+            height:100%;
+            overflow-y: auto;
+            background: url("static/image/techPic.jpg") no-repeat;
+            background-size: 100% 100%;
+        }
+        .divContainer{
+            width: 100%;
+            position: relative;
+            padding:20px;
+        }
+        .titleClass{
+            height: 50px;
+            line-height: 50px;
+            width: 100%;
+            position: absolute;
+            left:0;
+            top:0;
+            font-size: 1.6em;
+            text-align: center;
+            color:#BCE2E8;
+            background-color: rgba(9,34,53,.4);
+            z-index: 9;
+        }
+        .childContainer{
+            height: 800px;
+            margin-top:30px;
+            border:1px solid rgba(96,143,198,0.5);
+            background-color: rgba(12,37,56,0.9);
+            position: relative;
+        }
+        .childTitleClass{
+            background-color: rgba(0,77,89,.0);
+            width: 100%;
+            height:30px;
+            line-height: 30px;
+            text-align: center;
+            font-size: 1.2em;
+            color: #BCE2E8;
+        }
+        .childBodyClass{
+            width: 100%;
+            height:calc(100% - 30px);
+        }
+        .blueFontClass{
+            color: rgb(106,203,252);
+        }
+        .greenFontClass{
+            color: rgb(77,178,82);
+        }
+        .redFontClass{
+            color: rgb(255,0,0);
+        }
+
+        .left_text_class{
+            height: calc(100% - 30px);
+            width: 40%;
+            color:#fff;
+            font-size: 0.9em;
+            text-align: left;
+        }
+        .pic_square_container{
+            margin-top: 10px;
+            width: 50%;
+            height:140px;
+        }
+        .pic_square_title{
+            height: 20px;
+            line-height:12px;
+            width: 100%;
+            color:#fff;
+            font-size: 1.2em;
+            text-align: center;
+        }
+        .pic_square_body{
+            width:100%;
+            height:90px;
+            text-align: center;
+            position:relative;
+        }
+        .pic_square_body_image{
+            position:absolute;
+            top:20px;
+            left:calc(50% - 26px);
+            width:50px;
+            height:50px;
+        }
+        .pic_square_footer{
+            height: 25px;
+            line-height:33px;
+            width: 100%;
+            color:#fff;
+            font-size: 1.2em;
+            text-align: center;
+        }
+        .pic_square_footer_text{
+            height: 30px;
+            line-height:30px;
+            width: 100%;
+            color:#fff;
+            font-size: 0.7em;
+            text-align: center;
+            margin-top: 5px;
+        }
+
+        .right_pic_square_container{
+            width: 30%;
+            height:70px;
+        }
+        .right_pic_square_body{
+            height: 80px;
+            line-height: 10580;
+            width: 100%;
+            padding:5px;
+            text-align: center;
+            background-size: 35px 35px !important;
+        }
+        .right_pic_square_body_circle{
+            width:50px;
+            height: 50px;
+            margin:12px auto;
+            transform:rotate(45deg);
+            border: 5px solid #05A7BC;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <Row :gutter="8" class="divContainer">
+        <div class="titleClass">
+            Product Support Sales Monthly Dashboard - MA & ENG - September
+        </div>
+        <i-col span="7">
+            <div class="childContainer">
+                <!-- 左上角高亮 -->
+                <div style="width:30px;height:30px;position:absolute;left:0;top:0;border-left:1px solid #4BCADA;border-top:1px solid #4BCADA;"></div>
+                <!-- 左下角高亮 -->
+                <div style="width:30px;height:30px;position:absolute;left:0;bottom:0;border-left:1px solid #4BCADA;border-bottom:1px solid #4BCADA;"></div>
+                <div class="childTitleClass">
+                    CSM Performance Tracking
+                </div>
+                <div class="childBodyClass">
+                    <!-- 子容器类型二 -->
+                    <div style="height:34%;width:100%;border-bottom: 1px dotted rgba(96,143,198,0.5);">
+                        <!-- 顶部标题 -->
+                        <h3 style="text-align: center;height:30px;line-height: 30px;color: #1CB9CE;">
+                            YTD Sep 2019 CSM Coverage
+                        </h3>
+                        <!-- 图标容器 -->
+                        <div class="pic_square_container" style="width:45%;float: right;right:0;">
+                            <div class="pic_square_title">
+                                43%
+                            </div>
+                            <div class="pic_square_body">
+                                <img class="pic_square_body_image" src="static/image/worker.png"/>
+                                <pre></pre>
+                                <input class="knob" data-width="90" data-displayInput=false value="43">
+                            </div>
+                            <div class="pic_square_footer">
+                                Active Customer
+                            </div>
+                            <div class="pic_square_footer_text">
+                                <p style="height:30px;line-height: 17px;font-size: 1.4em;">The Active rate: <span class="blueFontClass">43%</span></p>
+                            </div>
+                        </div>
+                        <!-- 图标容器 -->
+                        <div style="clear: none;"></div>
+                        <div class="pic_square_container" style="width:55%;float: left;left:0;">
+                            <div class="pic_square_title">
+                                99.6%<br/>
+                                <span style="font-size:0.7em;">(Target = 100%)</span>
+                            </div>
+                            <div class="pic_square_body">
+                                <img class="pic_square_body_image" style="width: 45px;height: 45px;" src="static/image/users.png"/>
+                                <pre></pre>
+                                <input class="knob" data-width="90" data-displayInput=false value="99.6">
+                            </div>
+                            <div class="pic_square_footer">
+                                Coverage rate
+                            </div>
+                            <div class="pic_square_footer_text">
+                                <p style="height:30px;line-height: 17px;font-size: 1.4em;">The following segments are below <br/>the target:<span class="redFontClass">MA,ESS</span></p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 子容器类型三 -->
+                    <div style="height:33%;width:100%;border-bottom: 1px dotted rgba(96,143,198,0.5);">
+                        <!-- 顶部标题 -->
+                        <h3 style="text-align: center;height:30px;line-height: 30px;color: #1CB9CE;">
+                            YTD Sep 2019 GSM Coverage Tracking
+                        </h3>
+                        <div id="pie_001" style="height:calc(100% - 30px);width:50%;float:right;right:0;"></div>
+                        <div class="left_text_class" style="width:50%;float: left;left: 0;">
+                            <p style="height: 35px;line-height: 17px;margin-top: 30px;">● MTD covering(≥100%):11<br/>CSM,accounting for 85%</p>
+                            <p style="height: 35px;line-height: 17px;margin-top: 5px;">● MTD covering(80%≤&＜100%):<br/>2 CSM,accounting for 15%</p>
+                            <p style="height: 35px;line-height: 17px;margin-top: 5px;">● MTD covering(60%≤&＜80%):<br/>0 CSM,accounting for 0%</p>
+                            <p style="height: 35px;line-height: 17px;margin-top: 5px;">● MTD covering(＜60%):0 CSM,<br/>accounting for 0%</p>
+                        </div>
+                    </div>
+                    <!-- 子容器类型三 -->
+                    <div style="height:33%;width:100%;border-bottom: 1px dotted rgba(96,143,198,0.5);">
+                        <!-- 顶部标题 -->
+                        <h3 style="text-align: center;height:30px;line-height: 30px;color: #1CB9CE;">
+                            YTD Sep 2019 GSM Sales Performance
+                        </h3>
+                        <div id="pie_002" style="height:calc(100% - 30px);width:50%;float:right;right:0;"></div>
+                        <div class="left_text_class" style="width:50%;float: left;left: 0;">
+                            <p style="height: 35px;line-height: 17px;margin-top: 30px;">● YTD BP Achievement(<60%):2<br/>CSM,accounting for 14%</p>
+                            <p style="height: 35px;line-height: 17px;margin-top: 5px;">● YTD BP Achievement(60%≤&＜80%):<br/>0 CSM,accounting for 0%</p>
+                            <p style="height: 35px;line-height: 17px;margin-top: 5px;">● YTD BP Achievement(80%≤&＜100%):<br/>2 CSM,accounting for 14%</p>
+                            <p style="height: 35px;line-height: 17px;margin-top: 5px;">● YTD BP Achievement(≥100%):<br/>10 CSM,accounting for 72%</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </i-col>
+        <i-col span="10">
+            <div class="childContainer">
+                <div class="childTitleClass">
+                    Parts Sales Perormance
+                </div>
+                <div class="childBodyClass">
+                    <!-- 子容器类型三 -->
+                    <div style="height:34%;width:100%;border-bottom: 1px dotted rgba(96,143,198,0.5);">
+                        <!-- 顶部标题 -->
+                        <h3 style="text-align: center;height:30px;line-height: 30px;color: #1CB9CE;">
+                            YTD Sep 2019 Maintenance Revenue by Segment
+                        </h3>
+                        <div id="bar_001" style="height:calc(100% - 30px);width:60%;float:right;right:0;"></div>
+                        <div class="left_text_class" style="float: left;left: 0;">
+                            <p style="height: 25px;line-height: 17px;margin-top: 10px;">● MA&ENG Total Maintenance Revenue:<br/><span class="blueFontClass">1.92M,135%</span> of BP</p>
+                            <p style="height: 25px;line-height: 17px;margin-top: 10px;">● MA Maintenance Revenue: <span class="blueFontClass">0.4M,</span><br/><span class="blueFontClass">136%</span> of BP</p>
+                            <p style="height: 25px;line-height: 17px;margin-top: 10px;">● ESS Maintenance Revenue: <span class="blueFontClass">1.1M,</span><br/><span class="blueFontClass">134%</span> of BP</p>
+                            <p style="height: 25px;line-height: 17px;margin-top: 10px;">● Mining Project &JF Maintenance <br/>Revenue: <span class="blueFontClass">0.01M,9%</span> of BP</p>
+                            <p style="height: 25px;line-height: 17px;margin-top: 10px;">● KY Maintenance Revenue: <span class="blueFontClass">0.38M,</span><br/><span class="blueFontClass">262%</span> of BP</p>
+                        </div>
+                    </div>
+                    <!-- 子容器类型三 -->
+                    <div style="height:33%;width:100%;border-bottom: 1px dotted rgba(96,143,198,0.5);">
+                        <!-- 顶部标题 -->
+                        <h3 style="text-align: center;height:30px;line-height: 30px;color: #1CB9CE;">
+                            YTD Sep 2019 GP% Comparison by Customer
+                        </h3>
+                        <div id="bar_002" style="height:calc(100% - 30px);width:60%;float:right;right:0;"></div>
+                        <div class="left_text_class" style="float: left;left: 0;">
+                            <p style="height: 35px;line-height: 17px;margin-top: 30px;">● KunYang YTD 2019 Sep GP% is <span class="blueFontClass">40%</span>,<br/> decreased <span class="redFontClass">-1%</span> YOY</p>
+                            <p style="height: 35px;line-height: 17px;">● JinFeng YTD 2019 Sep GP% is <span class="blueFontClass">35%</span>,<br/>decreased <span class="redFontClass">-2%</span> YOY</p>
+                            <p style="height: 35px;line-height: 17px;">● Asia cement YTD 2019 Sep GP% is <span class="blueFontClass">30%</span>30%,<br/> decreased <span class="greenFontClass">+6%</span> YOY</p>
+                            <p style="height: 35px;line-height: 17px;">● CONCH cement YTD 2019 Sep GP% is <span class="blueFontClass">29%</span>,<br/>increased <span class="greenFontClass">+4%</span> YOY</p>
+                        </div>
+                    </div>
+                    <!-- 子容器类型三 -->
+                    <div style="height:33%;width:100%;border-bottom: 1px dotted rgba(96,143,198,0.5);">
+                        <!-- 顶部标题 -->
+                        <h3 style="text-align: center;height:30px;line-height: 30px;color: #1CB9CE;">
+                            YTD Sep 2019 A/R Tracking
+                        </h3>
+                        <div id="bar_003" style="height:calc(100% - 30px);width:60%;float:right;right:0;"></div>
+                        <div class="left_text_class" style="float: left;left: 0;">
+                            <p style="height: 30px;line-height: 15px;margin-top: 20px;">● MA Outstanding: <span class="blueFontClass">9:20M</span>, Overdue <span class="blueFontClass">0.22M</span>, <br/>account for <span class="blueFontClass">2%</span></p>
+                            <p style="height: 30px;line-height: 15px;margin-top: 5px;">● ESS Outstanding:<span class="blueFontClass">6.96M</span>, Overdue<span class="blueFontClass">0.32M</span>,<br/> account for <span class="blueFontClass">5%</span></p>
+                            <p style="height: 30px;line-height: 15px;margin-top: 5px;">● Mining Project Outstanding:<span class="blueFontClass">143.18M</span>,<br/> Overdue,<span class="blueFontClass">0.3M</span>,account for <span class="blueFontClass">3%</span></p>
+                            <p style="height: 30px;line-height: 15px;margin-top: 5px;">● KY Outstanding:<span class="blueFontClass">8.80M</span>,Overdue,<span class="blueFontClass">0.1M</span>,<br/>account for <span class="blueFontClass">1%</span></p>
+                            <p style="height: 30px;line-height: 15px;margin-top: 5px;">● JF Outstanding:<span class="blueFontClass">2.21M</span>,No Overdue</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </i-col>
+        <i-col span="7">
+            <div class="childContainer">
+                <!-- 右上角高亮 -->
+                <div style="width:30px;height:30px;position:absolute;right:0;top:0;border-right:1px solid #4BCADA;border-top:1px solid #4BCADA;"></div>
+                <!-- 右下角高亮 -->
+                <div style="width:30px;height:30px;position:absolute;right:0;bottom:0;border-right:1px solid #4BCADA;border-bottom:1px solid #4BCADA;"></div>
+                <div class="childTitleClass">
+                    Key Customers BP Completion rate
+                </div>
+                <div class="childBodyClass">
+                    <!-- 子容器类型二 -->
+                    <div style="height:20%;width:100%;border-bottom: 1px dotted rgba(96,143,198,0.5);">
+                        <!-- 图标容器 -->
+                        <div class="pic_square_container" style="width:30%;float: left;left:0;">
+                            <div class="pic_square_title">
+                                248%
+                            </div>
+                            <div class="pic_square_body" style="margin-top: -10px;">
+                                <img class="pic_square_body_image" style="width: 45px;height: 45px;" src="static/image/分子.png"/>
+                                <pre></pre>
+                                <input class="knob" data-width="90" data-displayInput=false value="99.6">
+                            </div>
+                            <div class="pic_square_footer">
+                                Kun Yang
+                            </div>
+                        </div>
+
+                        <!-- 右侧图表容器 -->
+                        <div style="clear: none;"></div>
+                        <div class="left_text_class" style="width:70%;float: right;right: 0;">
+                            <p style="height: 20px;line-height: 17px;margin-top: 50px;">● YTD Sales: <span class="blueFontClass">12.6M</span></p>
+                            <p style="height: 20px;line-height: 17px;margin-top: 5px;">● 2019 BP Achievement rate: <span class="blueFontClass">248%</span></p>
+                            <p style="height: 20px;line-height: 17px;margin-top: 5px;">● Compared to 2018 YTD Sep had increase by <span class="greenFontClass">+70%</span></p>
+                        </div>
+                    </div>
+                    <!-- 子容器类型二 -->
+                    <div style="height:20%;width:100%;border-bottom: 1px dotted rgba(96,143,198,0.5);">
+                        <!-- 图标容器 -->
+                        <div class="pic_square_container" style="width:30%;float: right;right:0;">
+                            <div class="pic_square_title">
+                                133%
+                            </div>
+                            <div class="pic_square_body" style="margin-top:-10px;">
+                                <img class="pic_square_body_image" style="width: 45px;height: 45px;" src="static/image/黄金.png"/>
+                                <pre></pre>
+                                <input class="knob" data-width="90" data-displayInput=false value="99.6">
+                            </div>
+                            <div class="pic_square_footer">
+                                Jin Feng
+                            </div>
+                        </div>
+
+                        <!-- 右侧图表容器 -->
+                        <div style="clear: none;"></div>
+                        <div class="left_text_class" style="width:70%;float: left;left: 0;">
+                            <p style="height: 20px;line-height: 17px;margin-top: 50px;">● YTD Sales: <span class="blueFontClass">7.7M</span></p>
+                            <p style="height: 20px;line-height: 17px;margin-top: 5px;">● 2019 BP Achievement rate: <span class="blueFontClass">133%</span></p>
+                            <p style="height: 20px;line-height: 17px;margin-top: 5px;">● Compared to 2018 YTD Sep had increase by <span class="redFontClass">-13%</span></p>
+                        </div>
+                    </div>
+                    <!-- 子容器类型二 -->
+                    <div style="height:20%;width:100%;border-bottom: 1px dotted rgba(96,143,198,0.5);">
+                        <!-- 图标容器 -->
+                        <div class="pic_square_container" style="width:30%;float: left;left:0;">
+                            <div class="pic_square_title">
+                                31%
+                            </div>
+                            <div class="pic_square_body" style="margin-top: -10px;">
+                                <img class="pic_square_body_image" style="width: 45px;height: 45px;" src="static/image/工厂.png"/>
+                                <pre></pre>
+                                <input class="knob" data-width="90" data-displayInput=false value="31">
+                            </div>
+                            <div class="pic_square_footer">
+                                Asia
+                            </div>
+                        </div>
+
+                        <!-- 右侧图表容器 -->
+                        <div style="clear: none;"></div>
+                        <div class="left_text_class" style="width:70%;float: right;right: 0;">
+                            <p style="height: 20px;line-height: 17px;margin-top: 50px;">● YTD Sales: <span class="blueFontClass">1.8M</span></p>
+                            <p style="height: 20px;line-height: 17px;margin-top: 5px;">● 2019 BP Achievement rate: <span class="blueFontClass">31%</span></p>
+                            <p style="height: 20px;line-height: 17px;margin-top: 5px;">● Compared to 2018 YTD Sep had increase by <span class="redFontClass">-12%</span></p>
+                        </div>
+                    </div>
+                    <!-- 子容器类型二 -->
+                    <div style="height:20%;width:100%;border-bottom: 1px dotted rgba(96,143,198,0.5);">
+                        <!-- 图标容器 -->
+                        <div class="pic_square_container" style="width:30%;float: right;right:0;">
+                            <div class="pic_square_title">
+                                61%
+                            </div>
+                            <div class="pic_square_body" style="margin-top:-10px;">
+                                <img class="pic_square_body_image" style="width: 45px;height: 45px;" src="static/image/水泥.png"/>
+                                <pre></pre>
+                                <input class="knob" data-width="90" data-displayInput=false value="61">
+                            </div>
+                            <div class="pic_square_footer">
+                                CONCH
+                            </div>
+                        </div>
+
+                        <!-- 右侧图表容器 -->
+                        <div style="clear: none;"></div>
+                        <div class="left_text_class" style="width:70%;float: left;left: 0;">
+                            <p style="height: 20px;line-height: 17px;margin-top: 50px;">● YTD Sales: <span class="blueFontClass">6.7M</span></p>
+                            <p style="height: 20px;line-height: 17px;margin-top: 5px;">● 2019 BP Achievement rate: <span class="blueFontClass">61%</span></p>
+                            <p style="height: 20px;line-height: 17px;margin-top: 5px;">● Compared to 2018 YTD Sep had increase by <span class="greenFontClass">+32%</span></p>
+                        </div>
+                    </div>
+                    <!-- 子容器类型二 -->
+                    <div style="height:20%;width:100%;border-bottom: 1px dotted rgba(96,143,198,0.5);">
+                        <!-- 图标容器 -->
+                        <div class="pic_square_container" style="width:30%;float: left;left:0;">
+                            <div class="pic_square_title">
+                                25%
+                            </div>
+                            <div class="pic_square_body" style="margin-top: -10px;">
+                                <img class="pic_square_body_image" style="width: 45px;height: 45px;" src="static/image/加油卡.png"/>
+                                <pre></pre>
+                                <input class="knob" data-width="90" data-displayInput=false value="25">
+                            </div>
+                            <div class="pic_square_footer">
+                                CNPC
+                            </div>
+                        </div>
+
+                        <!-- 右侧图表容器 -->
+                        <div style="clear: none;"></div>
+                        <div class="left_text_class" style="width:70%;float: right;right: 0;">
+                            <p style="height: 20px;line-height: 17px;margin-top: 50px;">● YTD Sales: <span class="blueFontClass">8.1M</span></p>
+                            <p style="height: 20px;line-height: 17px;margin-top: 5px;">● 2019 BP Achievement rate: <span class="blueFontClass">25%</span></p>
+                            <p style="height: 20px;line-height: 17px;margin-top: 5px;">● Compared to 2018 YTD Sep had increase by <span class="greenFontClass">+386%</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </i-col>
+    </Row>
+</div>
+
+<script>
+    $(function () {
+        $(".knob").knob();
+    });
+    new Vue({
+        el: '#app',
+        data: {
+            right_datas:[
+                [23,36,46,51,56,59,80,88,94,113],
+                [13,17,17,18,20,33,47,55,56,156],
+                [0,15,22,29,32,43,74,94,108,125],
+                [10,15,20,23,28,38,42,43,49,57],
+                [31,39,48,61,62,63,80,98,100,131],
+                [22,27,33,42,55,63,105,114,152,177],
+                [13,29,30,47,51,64,80,81,107,183]
+            ],
+            right_names:[
+                ["TB","SC2","SX","YN","GS","NX","SC1","GZ","QH","CQ"],
+                ["SC2","GZ","TB","GS","QH","SX","YN","NX","SC1","CQ"],
+                ["TB","SX","GS","SC2","GZ","YN","SC1","CQ","NX","QH"],
+                ["GS","QH","TB","SC2","SX","GZ","SC1","NX","YN","CQ"],
+                ["SX","QH","GZ","SC2","GS","TB","SC1","YN","NX","CQ"],
+                ["GS","SX","SC2","SC1","NX","TB","QH","YN","CQ","GZ"],
+                ["NX","GZ","SC2","SC1","CQ","SX","GS","QH","YN","TB"],
+            ]
+        },
+
+        //监听某个数据的变化执行函数
+        watch:{
+
+        },
+
+        computed:{
+
+        },
+        //创建实例之前-执行的钩子事件
+        beforeCreate: function () {
+            console.log("beforeCreate");
+        },
+
+        //创建实例之后-执行的钩子事件
+        //在实例创建之后同步调用。此时实例已经结束解析选项，这意味着已建立：数据绑定，计算属性，方法，watcher/事件回调。但是还没有开始 DOM 编译，$el 还不存在。
+        created: function () {
+            console.log("created");
+        },
+
+        //将编译完成的html挂载到对应虚拟dom之前触发的钩子事件，此时页面并没有内容
+        beforeMount:function(){
+            console.log("beforeMount");
+        },
+
+        //编译好的html挂载到页面完成后 执行的钩子事件，此钩子函数中一般会做一些ajax请求用于数据的初始化，在整个实例中只执行一次，
+        mounted:function(){
+            console.log("mounted");
+            this.generateBar_001();
+            this.generateBar_002();
+            this.generateBar_003();
+            this.generatePie_001();
+            this.generatePie_002();
+        },
+
+        //实时监控数据的变化并随之更新dom，更新之前执行的钩子事件
+        beforeUpdate:function(){
+
+        },
+
+        //实时监控数据的变化并随之更新dom，更新之后执行的钩子事件
+        updated:function(){
+
+        },
+
+        methods: {
+            generateBar_001(){
+                let bar_001 = echarts.init(document.getElementById('bar_001'));
+                let option = {
+                    color:["#4A9B82","#2683C6","#FEC208"],
+                    tooltip: {
+                        trigger: 'axis',
+                        axisPointer: {
+                            type: 'cross',
+                            crossStyle: {
+                                color: '#999'
+                            }
+                        }
+                    },
+                    grid:{
+                        top:"30px",
+                        bottom:"70px",
+                        left:"50px",
+                        right:"50px"
+                    },
+                    legend: {
+                        data:['2018 YTD BP','2019 YTD Act.','% of YTD BP'],
+                        y: "bottom",
+                        textStyle:{
+                            color: "#fff"
+                        }
+                    },
+                    xAxis: [
+                        {
+                            type: 'category',
+                            data: ['MA','ESS','Mining','KY'],
+                            axisPointer: {
+                                type: 'shadow'
+                            },
+                            axisLabel: {
+                                show: true,
+                                textStyle: {
+                                    color: '#fff'
+                                }
+                            },
+                            splitLine: {
+                                show: false
+                            }
+                        }
+                    ],
+                    yAxis: [
+                        {
+                            type: 'value',
+                            name: '',
+                            min: 0,
+                            max: 1.2,
+                            interval: 0.2,
+                            axisTick:{       //y轴刻度线
+                                show:false
+                            },
+                            splitLine: {
+                                show: false
+                            },
+                            axisLabel: {
+                                formatter: '{value}',
+                                textStyle: { //改变刻度字体样式
+                                    color: '#fff'
+                                }
+                            },
+                            nameTextStyle:{
+                                color:"#fff"
+                            }
+                        },
+                        {
+                            type: 'value',
+                            name: '',
+                            min: 0,
+                            max: 300,
+                            interval: 50,
+                            axisTick:{       //y轴刻度线
+                                show:false
+                            },
+                            splitLine: {
+                                show: false
+                            },
+                            axisLabel: {
+                                formatter: '{value}%',
+                                textStyle: { //改变刻度字体样式
+                                    color: '#fff'
+                                }
+                            },
+                            nameTextStyle:{
+                                color:"#fff"
+                            }
+                        }
+                    ],
+                    series: [
+                        {
+                            name:'2018 YTD BP',
+                            type:'bar',
+                            data:[0.3, 0.8, 0.1, 0.1]
+                        },
+                        {
+                            name:'2019 YTD Act.',
+                            type:'bar',
+                            data:[0.41, 1.12, 0.01, 0.38]
+                        },
+                        {
+                            name:'% of YTD BP',
+                            type:'line',
+                            yAxisIndex: 1,
+                            data:[130,130,10,260]
+                        }
+                    ]
+                };
+                bar_001.setOption(option);
+            },
+            generateBar_002(){
+                let bar_002 = echarts.init(document.getElementById('bar_002'));
+                let option = {
+                    color:["#4A9B82","#2683C6","#FEC208"],
+                    tooltip: {
+                        trigger: 'axis',
+                        axisPointer: {
+                            type: 'cross',
+                            crossStyle: {
+                                color: '#999'
+                            }
+                        }
+                    },
+                    grid:{
+                        top:"30px",
+                        bottom:"70px",
+                        left:"50px",
+                        right:"50px"
+                    },
+                    legend: {
+                        data:['2018 YTD GP%','2019 YTD GP%','2018 vs 2019'],
+                        y: "bottom",
+                        textStyle:{
+                            color: "#fff"
+                        }
+                    },
+                    xAxis: [
+                        {
+                            type: 'category',
+                            data: ['KunYang','JinFeng','Asia','CONCH'],
+                            axisPointer: {
+                                type: 'shadow'
+                            },
+                            axisLabel: {
+                                show: true,
+                                textStyle: {
+                                    color: '#fff'
+                                }
+                            },
+                            splitLine: {
+                                show: false
+                            }
+                        }
+                    ],
+                    yAxis: [
+                        {
+                            type: 'value',
+                            name: '',
+                            min: 0,
+                            max: 50,
+                            interval: 10,
+                            axisTick:{       //y轴刻度线
+                                show:false
+                            },
+                            splitLine: {
+                                show: false
+                            },
+                            axisLabel: {
+                                formatter: '{value}%',
+                                textStyle: { //改变刻度字体样式
+                                    color: '#fff'
+                                }
+                            },
+                            nameTextStyle:{
+                                color:"#fff"
+                            }
+                        },
+                        {
+                            type: 'value',
+                            name: '',
+                            min: -4,
+                            max: 6,
+                            interval: 2,
+                            axisTick:{       //y轴刻度线
+                                show:false
+                            },
+                            splitLine: {
+                                show: false
+                            },
+                            axisLabel: {
+                                formatter: '{value}%',
+                                textStyle: { //改变刻度字体样式
+                                    color: '#fff'
+                                }
+                            },
+                            nameTextStyle:{
+                                color:"#fff"
+                            }
+                        }
+                    ],
+                    series: [
+                        {
+                            name:'2018 YTD GP%',
+                            type:'bar',
+                            data:[40, 35, 29, 27]
+                        },
+                        {
+                            name:'2019 YTD GP%',
+                            type:'bar',
+                            data:[41, 36, 27, 26]
+                        },
+                        {
+                            name:'2018 vs 2019',
+                            type:'line',
+                            yAxisIndex: 1,
+                            data:[-1,-2,6,4]
+                        }
+                    ]
+                };
+                bar_002.setOption(option);
+            },
+            generateBar_003(){
+                let bar_003 = echarts.init(document.getElementById('bar_003'));
+                let option = {
+                    color:["#3494BA","#FFC000","#75BDA7"],
+                    tooltip: {
+                        trigger: 'axis',
+                        axisPointer: {
+                            type: 'cross',
+                            crossStyle: {
+                                color: '#999'
+                            }
+                        }
+                    },
+                    grid:{
+                        top:"30px",
+                        bottom:"70px",
+                        left:"50px",
+                        right:"50px"
+                    },
+                    legend: {
+                        data:['YTD Outstanding','YTD Overdue','AR Overdue%'],
+                        y: "bottom",
+                        textStyle:{
+                            color: "#fff"
+                        }
+                    },
+                    xAxis: [
+                        {
+                            type: 'category',
+                            data: ['MA','ESS','Mining Project','KY','JF'],
+                            axisPointer: {
+                                type: 'shadow'
+                            },
+                            axisLabel: {
+                                show: true,
+                                textStyle: {
+                                    color: '#fff'
+                                }
+                            },
+                            splitLine: {
+                                show: false
+                            }
+                        }
+                    ],
+                    yAxis: [
+                        {
+                            type: 'value',
+                            name: '',
+                            min: 0,
+                            max: 150,
+                            interval: 50,
+                            axisTick:{       //y轴刻度线
+                                show:false
+                            },
+                            splitLine: {
+                                show: false
+                            },
+                            axisLabel: {
+                                formatter: '{value}',
+                                textStyle: { //改变刻度字体样式
+                                    color: '#fff'
+                                }
+                            },
+                            nameTextStyle:{
+                                color:"#fff"
+                            }
+                        },
+                        {
+                            type: 'value',
+                            name: '',
+                            min: 0,
+                            max: 6,
+                            interval: 2,
+                            axisTick:{       //y轴刻度线
+                                show:false
+                            },
+                            splitLine: {
+                                show: false
+                            },
+                            axisLabel: {
+                                formatter: '{value}%',
+                                textStyle: { //改变刻度字体样式
+                                    color: '#fff'
+                                }
+                            },
+                            nameTextStyle:{
+                                color:"#fff"
+                            }
+                        }
+                    ],
+                    series: [
+                        {
+                            name:'YTD Outstanding',
+                            type:'bar',
+                            data:[9, 6.96, 143.18, 8.80,2.21]
+                        },
+                        {
+                            name:'YTD Overdue',
+                            type:'bar',
+                            data:[0, 0, 6, 0, 0]
+                        },
+                        {
+                            name:'AR Overdue%',
+                            type:'line',
+                            yAxisIndex: 1,
+                            data:[3,5,3,1,0]
+                        }
+                    ]
+                };
+                bar_003.setOption(option);
+            },
+            generatePie_001(){
+                let pie_001 = echarts.init(document.getElementById('pie_001'));
+                let option = {
+                    color:["#46A7F2","#4A9B82","#2A7695","#3494BA"],
+                    series: [
+                        {
+                            name:'',
+                            type:'pie',
+                            radius: ['0%', '70%'],
+                            center: ["50%", "47%"],
+                            avoidLabelOverlap: true,
+                            label: {
+                                normal: {
+                                    show: true,
+                                    textStyle: {
+                                        color: 'rgba(255,255,255,1)'
+                                    },
+                                    position:"inner",
+                                    formatter: "{b}\n{d}%"
+                                }
+                            },
+                            data:[
+                                {value:15, name:'100%>Covering≥80%'},
+                                {value:85, name:'Covering≥100%'}
+                            ]
+                        }
+                    ]
+                };
+                pie_001.setOption(option);
+            },
+            generatePie_002(){
+                let pie_002 = echarts.init(document.getElementById('pie_002'));
+                let option = {
+                    color:["#46A7F2","#4A9B82","#3494BA"],
+                    series: [
+                        {
+                            name:'',
+                            type:'pie',
+                            radius: ['0%', '70%'],
+                            center: ["50%", "47%"],
+                            avoidLabelOverlap: false,
+                            label: {
+                                normal: {
+                                    show: true,
+                                    textStyle: {
+                                        color: 'rgba(255,255,255,1)'
+                                    },
+                                    position:"inner",
+                                    formatter: "{b}\n{d}%"
+                                }
+                            },
+                            data:[
+                                {value:14, name:'60%>BP%'},
+                                {value:14, name:'100%>BP%≥80%'},
+                                {value:72, name:'BP%≥100%'}
+                            ]
+                        }
+                    ]
+                };
+                pie_002.setOption(option);
+            },
+        }
+    })
+</script>
+</body>
+</html>
